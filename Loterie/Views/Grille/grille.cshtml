@@ -1,0 +1,43 @@
+﻿@model GrilleViewModel
+@{
+    ViewData["Title"] = "Grille";
+}
+
+<script>
+    heure_fin = new Date('@Model.date_tirage.ToString("yyyy-MM-dd HH:mm:ss")');
+console.log(heure_fin);</script>
+
+
+<h1>Lot actuel : @Model.nombre_choux_total choux</h1>
+
+<div id="contenu">
+    <div class="div_tirage" id="tirage_nouvelle_partie">
+        @for(int i=1; i<7; i++)
+        {
+            <p><span id="valeur_@i" class="span_valeur">_</span></p>
+        }
+    </div>
+
+    <div id="grille">
+
+        
+        @for(var i=1; i<50; i++)
+        {
+            <p id="cellule_@i" onclick="ControlButton(@i)"><span>@i</span></p>
+        }
+
+        <p id="bouton_reinitialisation_grille" onclick="ReinitialiserGrille()"><i class="fa-regular fa-trash-can"></i></p>
+        <button id="bouton_validation_grille" type="button" class="bouton_gris" onclick="Participer()">Jouer</button>
+
+        <h3 id="texte_temps_ecoule" class="d-none">Le temps est écoulé ! <br />Vous ne pouvez plus participer à ce tirage.<br />Actualiser la page pour participer au tirage suivant.</h3>
+
+        <button id="bouton_temps_ecoule" type="button" class="bouton_bleu d-none" onclick="location.reload()">Actualiser</button>
+
+    </div> 
+
+    <form id="form_grille" method="post" enctype="multipart/form-data" asp-controller="Grille" asp-action="Grille">
+        <input type="hidden" id="valeur_participation" name="participation" asp-for="Participation">
+    </form> 
+</div>
+
+<script src="~/js/grille.js"></script>

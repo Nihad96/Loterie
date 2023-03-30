@@ -1,0 +1,59 @@
+﻿@model ResultatViewModel
+@{
+    ViewData["Title"] = "Resultat";
+    string[] tableau_tirage_utilisateur = Model.tirage_utilisateur.Split(";");
+    string[] tableau_tirage_aleatoire = Model.tirage_aleatoire.Split(";");
+}
+
+<h1>Résultats du tirage numéro @Model.id_tirage</h1>
+
+<h3 class="page_erreur">Tirage effectué le @Model.date_tirage.ToString("dd/MM/yyyy") à @Model.date_tirage.ToString("HH:mm").</h3>
+
+<div id="contenu">
+    <div id="contenu_resultats">
+
+        <h3>Votre tirage</h3>
+
+        <div class="div_tirage" id="tirage_utilisateur">
+            @{
+                for (int i = 0; i < tableau_tirage_utilisateur.Length; i++)
+                {
+                    if (Model.tirage_aleatoire.Contains(tableau_tirage_utilisateur[i]))
+                    {
+                        <p class="vert">@tableau_tirage_utilisateur[i]</p>
+                    }
+                    else
+                    {
+                        <p>@tableau_tirage_utilisateur[i]</p>
+                    }
+                }
+            } 
+        </div>
+
+        <div id="trait"></div>
+
+        <h3>Tirage gagnant</h3>
+
+        <div class="div_tirage" id="tirage_final">
+            @{
+                for (int i = 0; i < tableau_tirage_aleatoire.Length; i++)
+                {
+                    <p class="vert">@tableau_tirage_aleatoire[i]</p>
+                }
+            }
+        </div>
+
+
+        @if(Model.nombre_choux_remportes == 0)
+        {
+            <h3>Pas de chance, vous n'avez rien gagné cette fois ci !</h3>
+        }
+        else
+        {
+            <h3>Trop coooooool ! Vous avez gagné @Model.nombre_choux_remportes choux, bravo !</h3>
+        }
+
+        <button type="button" class="bouton_vert" onclick="window.location.href='@Url.Action("Grille", "Grille")'">Rejouer !</button>
+    </div>
+</div>
+@Model.nombre_choux_remportes

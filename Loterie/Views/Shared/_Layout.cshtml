@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Loterie</title>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/645c1d137c.js" crossorigin="anonymous"></script>
+    
+
+</head>
+
+<body>
+    <nav>
+        <button type="button" class="bouton_bleu" onclick="window.location.href='@Url.Action("Index", "Home")'">Accueil</button>
+        <h2 id="timer" class="jaune"></h2>
+    </nav>
+
+    @RenderBody()
+
+
+    <!-- <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script> -->
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

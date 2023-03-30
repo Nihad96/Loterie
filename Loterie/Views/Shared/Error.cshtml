@@ -1,0 +1,13 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Erreur";
+}
+
+<h1 class="page_erreur">Erreur</h1>
+
+<h3 class="page_erreur">Une erreur est survenue et la participation n'a pas été prise en compte.</h3>
+
+<h3 class="page_erreur">Utilisez le bouton ci-dessous pour retourner à la grille.</h3>
+
+<button type="button" class="bouton_vert page_erreur" onclick="window.location.href='@Url.Action("Grille", "Grille")'">À la grille</button>
+

@@ -1,0 +1,14 @@
+﻿@model ConfirmationViewModel
+@{
+    ViewData["Title"] = "Confirmation";
+}
+
+<h1 class="page_erreur">Votre participation a été enregistrée !</h1>
+
+<h3 class="page_erreur">Voici votre code d'authentification unique :</h3>
+
+<h2 class="page_erreur jaune">@Model.guid</h2>
+
+<h3 class="page_erreur">Veillez à le copier afin de pouvoir consulter votre résultat ultérieurement.</h3>
+
+<h3 class="page_erreur">Attention ! Vous ne pourrez consulter le résultat qu'une fois le tirage terminé !</h3>

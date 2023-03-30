@@ -1,0 +1,32 @@
+﻿@model IndexViewModel
+@{
+    ViewData["Title"] = "Accueil";
+}
+
+<h1>Bienvenue à la loterie des choux</h1>
+
+<div id="contenu">
+    <div id="bloc_accueil_gauche">
+        <div class="bloc_contenu">
+            <h2 class="titre_rouge">Consulter un tirage passé</h2>
+            <p>Entrez votre numéro d'identifiant unique dans le champ ci-dessous et validez afin de consuler le résultat du tirage lié.</p>
+
+            <form id="form_guid" method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Index">
+                <input asp-for="User_guid" type="text" placeholder="Entrez le code d'authentification ici" name="user_guid">
+            </form>
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <button type="button" class="bouton_rouge" onclick="document.getElementById('form_guid').submit();">Valider</button>
+            
+        </div>
+    </div>
+
+
+    <div id="bloc_accueil_droite">
+        <div class="bloc_contenu">
+            <h2 class="titre_vert">Participer au prochain tirage</h2>
+            <p>Accéder à la grille permettant de participer au prochain tirage. Attention, on ne peut plus participer dès lors qu’il ne reste qu’une minute de compte à rebours !</p>
+            
+            <button type="button" class="bouton_vert" onclick="window.location.href='@Url.Action("Grille", "Grille")'">À la grille</button>
+        </div>
+    </div>
+</div>
